@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link href="./static/styles/common.css" rel="stylesheet">
+        <script src="https://use.typekit.net/wot2cyz.js" rel="preload"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <style>
+            .landing-header {
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.95);
+                display: flex;
+                flex-direction: column;
+                padding: 8rem 2rem 3rem;
+                text-align: center;
+            }
+            .landing-header img {
+                height: 150px;
+                margin-bottom: 1.8rem;
+                width: 150px;
+            }
+            .landing-header h3 {
+                color: rgba(255, 255, 255, 0.9);
+                line-height: 1.4;
+                margin-bottom: 1.3rem;
+            }
+            .landing-header p {
+                color: rgba(255, 255, 255, 0.6);
+                font-size: 0.9rem;
+                line-height: 1.3;
+                margin-bottom: 4rem;
+            }
+            .landing-header button {
+                border: 1px solid #d1372f;
+                color: #fff;
+                font-size: 1rem;
+                height: 43px;
+                overflow: hidden;
+                position: relative;
+                width: 180px;
+            }
+            .landing-header button span {
+                display: inline-block;
+                position: relative;
+                z-index: 2;
+            }
+            .landing-header button::after {
+                background-color: #d1372f;
+                bottom: 0;
+                content: '';
+                height: 130%;
+                left: -10%;
+                position: absolute;
+                transform: skewX(15deg);
+                transition: all 0.4s ease-in;
+                width: 0;
+                z-index: 1;
+            }
+            .landing-header button:hover::after {
+                width: 132%;
+            }
+            .landing-works {
+                background-color: #f5f5f5;
+                padding: 4.3rem 0 2rem;
+                text-align: center;
+            }
+            .landing-works h2 {
+                color: #8d9dac;
+                font-weight: 300;
+                letter-spacing: 1.2px;
+            }
+            .products {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                padding: 3.5rem 0 0;
+            }
+            .product {
+                background-color: #fefefe;
+                border-radius: 4px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.23);
+                height: 300px;
+                padding: 0.8rem 0.4rem;
+                margin: 0 auto 2.5rem;
+                text-align: left;
+                width: 80%;
+            }
+            .product img {
+                height: 70%;
+                width: 100%;
+            }
+            .product:nth-of-type(1) img {
+                padding-left: 30%;
+                width: 70%;
+            }
+            .product p {
+                border-top: 1px solid #8d9dac;
+                color: #8d9dac;
+                font-size: 0.95rem;
+                line-height: 1.2;
+                padding-top: 0.7rem;
+                margin: -1.8rem auto 0;
+                text-align: center;
+                width: 80%;
+            }
+            .product:nth-of-type(2) p {
+                margin-top: -2.1rem;
+            }
+            .landing-about {
+                position: relative;
+            }
+            .landing-about img {
+                height: 450px;
+                width: 100%;
+            }
+            .about-overlay {
+                background: rgba(209, 55, 47, 0.5);
+                height: 100%;
+                left: 0;
+                padding: 1.2rem 1rem;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+            .about-overlay p {
+                color: #fff;
+                font-size: 1rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            }
+            .about-overlay p:nth-of-type(1) {
+                font-size: 1.1rem;
+            }
+            .about-overlay p:nth-of-type(4) {
+                font-weight: 800;
+            }
+            .landing-contact {
+                padding: 3rem 0;
+            }
+            .landing-contact form {
+                margin: 0 auto;
+                width: 85%;
+            }
+            .input-wrapper input:focus + label {
+                opacity: 0;
+                transform: translateX(-35px);
+            }
+            .input-wrapper.valid label {
+                opacity: 0;
+                transform: translateX(-35px);
+            }
+            .input-wrapper.invalid label {
+                opacity: 0;
+                transform: translate(-35px);
+            }
+            .input-wrapper.blank label {
+                opacity: 1;
+                transform: translate(0);
+            }
+            .form-submit {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+            .form-submit button {
+                background-color: #eee;
+                font-size: 0.87rem;
+                letter-spacing: 1.1px;
+                height: 40px;
+                margin-top: 1rem;
+                text-transform: uppercase;
+                width: 180px;
+            }
+            .footer {
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.95);
+                color: rgba(255, 255, 255, 0.6);
+                display: flex;
+                justify-content: center;
+                padding: 1.55rem 0;
+            }
+            .footer img {
+                height: 50px;
+                margin-right: 0.7rem;
+                width: 50px;
+            }
+            @media screen and (min-width: 450px) {
+                .products {
+                    padding: 4.5rem 0;
+                }
+                .landing-contact form {
+                    width: 76%;
+                }
+                .about-overlay {
+                    padding-top: 3.8rem;
+                }
+                .about-overlay p:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+            @media screen and (min-width: 600px) {
+                .landing-header {
+                    padding-bottom: 4rem;
+                }
+                .landing-header img {
+                    height: 185px;
+                    width: 185px;
+                }
+                .landing-header h3 {
+                    font-size: 1.4rem;
+                    margin: 0 auto 2rem;
+                    width: 75%;
+                }
+                .landing-header p {
+                    font-size: 1rem;
+                    line-height: 1.4;
+                    margin: 0 auto 4.8rem;
+                    width: 80%;
+                }
+                .product {
+                    width: 65%;
+                }
+                .about-overlay p {
+                    margin-bottom: 1.8rem;
+                }
+                .about-overlay p:last-of-type {
+                    font-size: 1.3rem;
+                }
+                .landing-contact {
+                    padding: 5rem 0 3rem;
+                }
+                .landing-contact form {
+                    width: 70%;
+                }
+            }
+            @media screen and (min-width: 1000px) {
+                .landing-header {
+                    padding-bottom: 5rem;
+                }
+                .landing-header img {
+                    height: 175px;
+                    width: 175px;
+                }
+                .landing-header h3 {
+                    font-size: 1.4rem;
+                }
+                .landing-header p {
+                    width: 60%;
+                }
+                .landing-header button {
+                    height: 45px;
+                }
+                .products {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin: 0 auto;
+                    padding: 5.6rem;
+                    width: 85%;
+                }
+                .product {
+                    width: 45%                
+                }
+                .about-overlay {
+                    padding-top: 5.5rem;
+                    text-align: center;
+                }
+                .about-overlay p {
+                    margin: 0 auto 1.4rem;
+                    width: 75%;
+                }
+                .about-overlay p:nth-of-type(3) {
+                    margin-bottom: 2.7rem;
+                }
+                .landing-contact form {
+                    width: 55%;
+                }
+                .form-submit button {
+                    height: 50px;
+                    width: 200px;
+                }
+                .footer {
+                    padding: 2rem 0;
+                }
+                .footer img {
+                    height: 60px;
+                    width: 60px;
+                    margin-right: 1.5rem;
+                }
+            }
+            @media screen and (min-width: 1400px) {
+                .about-overlay p {
+                    font-size: 1.1rem;
+                    width: 65%;
+                }
+                .about-overlay p:not(:nth-of-type(3)) {
+                    margin-bottom: 2rem;
+                }
+                .landing-contact form {
+                    width: 48%;
+                }
+            }
+            @media screen and (min-width: 1650px) {
+                .product {
+                    width: 35%;
+                }
+                .landing-contact form {
+                    width: 38%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="application-container">
+            <header class="page-header landing-header">
+                <img src="./static/images/logo.png" alt="Mindrite logo">
+                <h3>A Natural, Holistic Solution to Supplmentation</h3>
+                <p>Give your body the extra help it needs without weighing it down with unpronouncable chemicals</p>
+                <button type="button">
+                    <span>Get in Touch</span>
+                </button>
+            </header>
+            <section class="page-section landing-works">
+                <h2>Our Products</h2>
+                <div class="products">
+                    <div class="product">
+                        <img src="./static/images/bazinga.png">
+                        <p>BaZINGA! is a great, natural way to enhance your energy and help you maintain focus throughout your day.</p>
+                    </div>
+                    <div class="product">
+                        <img src="./static/images/yaaas.png">
+                        <p>Yaaas is another great way to enhance your energy levels. The immediate focus of this product is on energy, giving you that extra push to get you through your day</p>
+                    </div>
+                </div>
+            </section>
+            <section class="page-section landing-about">
+                <img src="./static/images/about-mobile.jpg" alt="about Mindrite">
+                <div class="about-overlay">
+                    <p>Mindrite is commmited to supplying a myriad of the highest quality natural kratom, supplements and smoking blends that surpass our customers' expectations.</p>
+
+                    <p>Since 2005 our products have been acquired and formulated using only premium ingredients.
+                    We surpass the the requirements of quality to provide our resellers a product they can be proud of. We're always eager to deliver an above exceptional customer service experience. Our dependendable staff is here to keep our promise of customer satisfaction</p>
+
+                    <p>Join the multitude of clients worldwide who have carried Mindrite products -- nature's highest quality of kratom and supplements</p>
+
+                    <p>Mind your business with the Rite Products</p>
+                </div>
+            </section>
+            <section class="page-section landing-contact">
+                <form name="contact" id="contact-form">
+                    <div class="input-wrapper">
+                        <input type="text" name="name" id="name">
+                        <label for="name">Name</label>
+                    </div>
+
+                    <div class="input-wrapper form-email">
+                        <input type="text" name="email" id="email">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="input-wrapper form-phone">
+                        <input type="text" name="phone" id="phone">
+                        <label for="phone">Phone</label>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <textarea name="message" id="message"></textarea>
+                        <label for="message">Message</label>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="button" id="contact-submit">Submit</button>
+                    </div>
+                </form>
+            </section>
+            <footer class="footer">
+                <img src="./static/images/logo.png" alt="Mindrite">
+                <p>&copy; Mindrite 2017</p>
+            </footer>
+        </main>
+
+        <script src="./vendor.js" rel="preload"></script>
+        <script src="./contact.js" rel="preload"></script>
+    </body>
+</html>

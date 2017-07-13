@@ -1,0 +1,71 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'ff-enzo-web';
+    font-size: 16px;
+    font-weight: 600;
+    overflow-x: hidden;
+}
+body {
+    overflow-x: hidden;
+}
+h1 {
+    font-size: 2.2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+h3 {
+    font-size: 1.2rem;
+}
+button {
+    background-color: transparent;
+    border: none;
+    transition: color 0.4s ease-in, background-color 0.4s ease-in;
+}
+a {
+    text-decoration: none;
+}
+.input-wrapper {
+    margin-bottom: 1.6rem;
+    position: relative;
+}
+.input-wrapper input {
+    height: 35px;
+}
+.input-wrapper textarea {
+    height: 200px;
+    padding-top: 0.7rem;
+}
+.input-wrapper input, .input-wrapper textarea {
+    border: 1px solid #d2dbe2;
+    border-radius: 4px;
+    color: #8d9dac;
+    padding-left: 0.8rem;
+    width: 100%;
+}
+.input-wrapper label {
+    color: #8d9dac;
+    font-size: 0.9rem;
+    left: 12px;
+    opacity: 1;
+    position: absolute;
+    top: 10px;
+    transition: all 0.4s ease-out;
+}
+
+@media screen and (min-width: 1000px) {
+    h2 {
+        font-size: 2.2rem;
+    }
+    .input-wrapper input {
+        height: 42px;
+    }
+    .input-wrapper label {
+        top: 14px;
+    }
+}

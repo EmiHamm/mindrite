@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./static/styles/common.css" rel="stylesheet">
+        <script src="https://use.typekit.net/wot2cyz.js" rel="preload"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <style>
+            .login-page {
+                align-items: center;
+                background-color: #eee;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                padding-top: 4rem;
+            }
+            .login-page header {
+                color: #8d9dac;
+                padding: 2rem 0 4rem;
+                text-align: center;
+            }
+            .login-page form {
+                background-color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 4px 8px 0 rgba(), 0, 0, 0.12;
+                margin: 0 auto;
+                padding: 2rem 0.7rem;
+                width: 80%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="application-container">
+            <section class="login-page">
+                <header>
+                    <h1>Login</h1>
+                </header>
+
+                <form name="login">
+                    <div class="input-wrapper">
+                        <input type="text" id="email" name="email">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password">
+                        <label for="password">Password</label>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="button" id="login">Login</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
