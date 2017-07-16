@@ -10,7 +10,7 @@
         <style>
             .landing-header {
                 align-items: center;
-                background-color: rgba(0, 0, 0, 0.95);
+                background-color: rgba(0, 0, 0, 0.85);
                 display: flex;
                 flex-direction: column;
                 padding: 8rem 2rem 3rem;
@@ -78,35 +78,34 @@
                 padding: 3.5rem 0 0;
             }
             .product {
+                align-items: center;
                 background-color: #fefefe;
                 border-radius: 4px;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.23);
+                display: flex;
+                flex-direction: column;
                 height: 300px;
+                justify-content: center;
                 padding: 0.8rem 0.4rem;
                 margin: 0 auto 2.5rem;
                 text-align: left;
                 width: 80%;
             }
             .product img {
-                height: 70%;
-                width: 100%;
+                height: 50%;
+                margin-bottom: 0.7rem;
+                width: 55%;
             }
-            .product:nth-of-type(1) img {
-                padding-left: 30%;
-                width: 70%;
-            }
+
             .product p {
                 border-top: 1px solid #8d9dac;
                 color: #8d9dac;
                 font-size: 0.95rem;
                 line-height: 1.2;
                 padding-top: 0.7rem;
-                margin: -1.8rem auto 0;
+                margin: 0 auto;
                 text-align: center;
                 width: 80%;
-            }
-            .product:nth-of-type(2) p {
-                margin-top: -2.1rem;
             }
             .landing-about {
                 position: relative;
@@ -144,7 +143,7 @@
                 margin: 0 auto;
                 width: 85%;
             }
-            .input-wrapper input:focus + label {
+            .input-wrapper input:focus + label, .input-wrapper textarea:focus + label {
                 opacity: 0;
                 transform: translateX(-35px);
             }
@@ -159,6 +158,16 @@
             .input-wrapper.blank label {
                 opacity: 1;
                 transform: translate(0);
+            }
+            .input-wrapper.invalid .error-message {
+                opacity: 1;
+            }
+            .error-message {
+                color: #d1372f;
+                margin-top: 0.4rem;
+                margin-left: 0.8rem;
+                opacity: 0;
+                transition: all 0.4s ease-out;
             }
             .form-submit {
                 align-items: center;
@@ -291,6 +300,9 @@
                 }
             }
             @media screen and (min-width: 1400px) {
+                .product img {
+                    height: 60%;
+                }
                 .about-overlay p {
                     font-size: 1.1rem;
                     width: 65%;
@@ -304,6 +316,7 @@
             }
             @media screen and (min-width: 1650px) {
                 .product {
+                    height: 360px;
                     width: 35%;
                 }
                 .landing-contact form {
@@ -318,8 +331,8 @@
             <header class="page-header landing-header">
                 <img src="./static/images/logo.png" alt="Mindrite logo">
                 <h3>A Natural, Holistic Solution to Supplmentation</h3>
-                <p>Give your body the extra help it needs without weighing it down with unpronouncable chemicals</p>
-                <button type="button">
+                <p>Mind your business with the Rite Products</p>
+                <button type="button" id="contact-scroller">
                     <span>Get in Touch</span>
                 </button>
             </header>
@@ -328,47 +341,53 @@
                 <div class="products">
                     <div class="product">
                         <img src="./static/images/bazinga.png">
-                        <p>BaZINGA! is a great, natural way to enhance your energy and help you maintain focus throughout your day.</p>
+                        <p>Rise to any challenge and tackle your day with Bazinga! Our premium ingredients provide the focus and clean energy you've always craved. Get rid of fatigue, it's time to achieve!</p>
                     </div>
                     <div class="product">
                         <img src="./static/images/yaaas.png">
-                        <p>Yaaas is another great way to enhance your energy levels and your mood throughout the day</p>
+                        <p>Be Happy. Be You. Our ultimate feel-good mood booster has an additional lift of energy to help you power through your day.</p>
                     </div>
                 </div>
             </section>
             <section class="page-section landing-about">
                 <img src="./static/images/about-mobile.jpg" alt="about Mindrite">
                 <div class="about-overlay">
-                    <p>Mindrite is commmited to supplying a myriad of the highest quality natural kratom, supplements and smoking blends that surpass our customers' expectations.</p>
+                    <p>Mindrite is commited to supplying a myriad of the highest quality supplements that surpass our customers' expectations.</p>
 
                     <p>Since 2005 our products have been acquired and formulated using only premium ingredients.
-                    We surpass the the requirements of quality to provide our resellers a product they can be proud of. We're always eager to deliver an above exceptional customer service experience. Our dependendable staff is here to keep our promise of customer satisfaction</p>
+                    We surpass the the requirements of quality to provide our resellers a product they can be proud of. We're always eager to deliver an above exceptional customer service experience. Our dependendable staff is here to keep our promise of customer satisfaction.</p>
 
-                    <p>Join the multitude of clients worldwide who have carried Mindrite products -- nature's highest quality of kratom and supplements</p>
+                    <p>Join the multitude of clients worldwide who have carried Mindrite Products.</p>
 
                     <p>Mind your business with the Rite Products</p>
                 </div>
             </section>
-            <section class="page-section landing-contact">
+            <section class="page-section landing-contact" id="contact-container">
                 <form name="contact" id="contact-form">
                     <div class="input-wrapper">
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" class="form-input">
                         <label for="name">Name</label>
+                        <p class="error-message">Sorry, we need your name!</p>
                     </div>
 
                     <div class="input-wrapper form-email">
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="email" class="form-input">
                         <label for="email">Email</label>
+                        <p class="error-message">Sorry, please enter a valid email</p>
                     </div>
 
                     <div class="input-wrapper form-phone">
-                        <input type="text" name="phone" id="phone">
+                        <input type="text" name="phone" id="phone" class="form-input">
                         <label for="phone">Phone</label>
+                        <p class="error-message">
+                            Please enter your number XXX XXX XXXX
+                        </p>
                     </div>
 
                     <div class="input-wrapper">
-                        <textarea name="message" id="message"></textarea>
+                        <textarea name="message" id="message" class="form-input"></textarea>
                         <label for="message">Message</label>
+                        <p class="error-message">We need to know what you want to say</p>
                     </div>
 
                     <div class="form-submit">

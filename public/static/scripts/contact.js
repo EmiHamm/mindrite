@@ -4,12 +4,14 @@ import { onBlur } from './validator';
 
 (function contact() {
     const formWrappers = document.querySelectorAll('.input-wrapper');
-    const formInputs = document.querySelectorAll('.input-wrapper input');
+    const formInputs = document.querySelectorAll('.form-input');
     const submitButton = document.getElementById('contact-submit');
     const successContent = document.getElementById('contact-success');
     const failureContent = document.getElementById('failure-content');
     const errorContent = document.getElementById('error-content');
-    const contactState = {
+    const contactScroll = document.getElementById('contact-scroller');
+    const contactContainer = document.getElementById('contact-container');
+   const contactState = {
         name: '',
         email: '',
         phone: '',
@@ -33,6 +35,8 @@ import { onBlur } from './validator';
         for (const input of formInputs) {
             input.value = '';
             input.classList.remove('valid');
+            input.classList.remove('blank');
+            input.classList.remove('invalid');
         }
     }
 
@@ -74,4 +78,42 @@ import { onBlur } from './validator';
             }
         }
     }
+
+    const smoothScroll = (function() {
+        let timer;
+        let start;
+        let factor;
+
+        return function (target, duration = 1000) {
+            let offset = window.pageYOffset;
+            let delta = target - window.pageYOffset;
+            start = Date.now();
+            factor = 0;
+
+            if (timer) {
+                clearInterval(timer);
+            }
+
+            function step() {
+                let y;
+                factor = (Date.now() - start) / duration;
+
+                if (factor >= 1) {
+                    clearInterval(timer);
+                    factor = 1;
+                }
+
+                y = factor * delta + offset;
+                window.scrollBy(0, y - window.pageYOffset);
+            }
+
+            timer = setInterval(step, 10);
+            return timer;
+        }
+    }());
+
+    submitButton.addEventListener('click', resetForm);
+    contactScroll.addEventListener('click', () => {
+        smoothScroll(contactContainer.offsetTop);
+    });
 })();

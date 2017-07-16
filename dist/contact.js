@@ -1,4 +1,4 @@
-webpackJsonp([1],{
+webpackJsonp([0],{
 
 /***/ "./public/static/scripts/contact.js":
 /*!******************************************!*\
@@ -25,11 +25,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (function contact() {
     var formWrappers = document.querySelectorAll('.input-wrapper');
-    var formInputs = document.querySelectorAll('.input-wrapper input');
+    var formInputs = document.querySelectorAll('.form-input');
     var submitButton = document.getElementById('contact-submit');
     var successContent = document.getElementById('contact-success');
     var failureContent = document.getElementById('failure-content');
     var errorContent = document.getElementById('error-content');
+    var contactScroll = document.getElementById('contact-scroller');
+    var contactContainer = document.getElementById('contact-container');
     var contactState = {
         name: '',
         email: '',
@@ -63,6 +65,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
                 input.value = '';
                 input.classList.remove('valid');
+                input.classList.remove('blank');
+                input.classList.remove('invalid');
             }
         } catch (err) {
             _didIteratorError = true;
@@ -118,6 +122,46 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
             }
         }
     }
+
+    var smoothScroll = function () {
+        var timer = void 0;
+        var start = void 0;
+        var factor = void 0;
+
+        return function (target) {
+            var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+
+            var offset = window.pageYOffset;
+            var delta = target - window.pageYOffset;
+            start = Date.now();
+            factor = 0;
+
+            if (timer) {
+                clearInterval(timer);
+            }
+
+            function step() {
+                var y = void 0;
+                factor = (Date.now() - start) / duration;
+
+                if (factor >= 1) {
+                    clearInterval(timer);
+                    factor = 1;
+                }
+
+                y = factor * delta + offset;
+                window.scrollBy(0, y - window.pageYOffset);
+            }
+
+            timer = setInterval(step, 10);
+            return timer;
+        };
+    }();
+
+    submitButton.addEventListener('click', resetForm);
+    contactScroll.addEventListener('click', function () {
+        smoothScroll(contactContainer.offsetTop);
+    });
 })();
 
 /***/ }),
